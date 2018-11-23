@@ -27,7 +27,7 @@ class Order {
 }
 //4. Придумать наследников класса из п.1. Чем они будут отличаться?
 class adminOrder extends Order { //работать с подключением файлов умею, пишу все в одном чтобы вам не скакать по ним
-    var $status;
+    var $status; 
     
         function __construct($status, $product, $price, $amount) {
         $this->status = $status;
