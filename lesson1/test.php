@@ -2,9 +2,9 @@
 <?php
 // 1. Придумать класс, который описывает любую сущность из предметной области интернет-магазинов: продукт, ценник, посылка и т.п.
 class Order {
-    var $product;
-    var $price;
-    var $amount;
+    var $product; //продукт
+    var $price;   //цена
+    var $amount;  //кол-во
 //2. Описать свойства класса из п.1 (состояние).
     function __construct($product, $price, $amount) {
         $this->product = $product;
@@ -18,6 +18,10 @@ class Order {
 
     function showDetail() { //Отобразить детали заказа
         echo "Вы заказали ".$this->product." ".$this->amount. "шт. по цене: ".$this->price."<br>Итог:".$this->totalprice($this->price, $this->amount); 
+    }
+    
+    function deleteOrder() { //Удалить заказ
+        echo "Ваш заказ ".$this->product." ".$this->amount. "шт. - ".$this->totalprice($this->price, $this->amount)."р. был удален из корзины!"; 
     }
     
 }
@@ -46,13 +50,15 @@ class adminOrder extends Order { //работать с подключением файлов умею, пишу все
 
 
 $obj = new Order("Телефон", 3000, 2);
-$obj->showDetail(); //клиентская часть
+$obj->showDetail(); //клиентская часть, показать детали
+echo "<br>";
+$obj->deleteOrder(); //удалить заказ
 echo "<br><br><br>";
 $status = new adminOrder("Отправлен", "Телефон", 3000, 2); //изменение статуса заказа из админки
 $status->showOrder();
 
 
-/*Задание 5
+/*Задание 5 Что он выведет на каждом шаге? Почему?
 class A {
     public function foo() {
         static $x = 0;
@@ -82,7 +88,7 @@ class B extends A {
 $a1 = new A();
 $b1 = new B();
 $a1->foo(); //1
-$b1->foo(); //1 потому что используем объект дочернего класса с наследуемыми свойствами, т.е. по сути используем новый объект.
+$b1->foo(); //1 потому что используем объект дочернего класса с наследуемыми свойствами, т.е. по сути используем новый объект с наследуемым методом foo
 $a1->foo(); //2
 $b1->foo(); //2
  */
