@@ -1,16 +1,16 @@
 <?php /*
 
-1. Создать структуру классов ведения товарной номенклатуры.
-а) Есть абстрактный товар.
+1. РЎРѕР·РґР°С‚СЊ СЃС‚СЂСѓРєС‚СѓСЂСѓ РєР»Р°СЃСЃРѕРІ РІРµРґРµРЅРёСЏ С‚РѕРІР°СЂРЅРѕР№ РЅРѕРјРµРЅРєР»Р°С‚СѓСЂС‹.
+Р°) Р•СЃС‚СЊ Р°Р±СЃС‚СЂР°РєС‚РЅС‹Р№ С‚РѕРІР°СЂ.
 
-б) Есть цифровой товар, штучный физический товар и товар на вес.
+Р±) Р•СЃС‚СЊ С†РёС„СЂРѕРІРѕР№ С‚РѕРІР°СЂ, С€С‚СѓС‡РЅС‹Р№ С„РёР·РёС‡РµСЃРєРёР№ С‚РѕРІР°СЂ Рё С‚РѕРІР°СЂ РЅР° РІРµСЃ.
 
-в) У каждого есть метод подсчета финальной стоимости.
+РІ) РЈ РєР°Р¶РґРѕРіРѕ РµСЃС‚СЊ РјРµС‚РѕРґ РїРѕРґСЃС‡РµС‚Р° С„РёРЅР°Р»СЊРЅРѕР№ СЃС‚РѕРёРјРѕСЃС‚Рё.
 
-г) У цифрового товара стоимость постоянная – дешевле штучного товара в два раза. У штучного товара обычная стоимость, у весового – в зависимости от продаваемого количества в килограммах. У всех формируется в конечном итоге доход с продаж.
+Рі) РЈ С†РёС„СЂРѕРІРѕРіРѕ С‚РѕРІР°СЂР° СЃС‚РѕРёРјРѕСЃС‚СЊ РїРѕСЃС‚РѕСЏРЅРЅР°СЏ вЂ“ РґРµС€РµРІР»Рµ С€С‚СѓС‡РЅРѕРіРѕ С‚РѕРІР°СЂР° РІ РґРІР° СЂР°Р·Р°. РЈ С€С‚СѓС‡РЅРѕРіРѕ С‚РѕРІР°СЂР° РѕР±С‹С‡РЅР°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ, Сѓ РІРµСЃРѕРІРѕРіРѕ вЂ“ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РїСЂРѕРґР°РІР°РµРјРѕРіРѕ РєРѕР»РёС‡РµСЃС‚РІР° РІ РєРёР»РѕРіСЂР°РјРјР°С…. РЈ РІСЃРµС… С„РѕСЂРјРёСЂСѓРµС‚СЃСЏ РІ РєРѕРЅРµС‡РЅРѕРј РёС‚РѕРіРµ РґРѕС…РѕРґ СЃ РїСЂРѕРґР°Р¶.
 
-д) Что можно вынести в абстрактный класс, наследование?
--В абстрактном классе мы выносим поля и общий абстрактный метод который необходимо переопределить в каждом дочернем классе
+Рґ) Р§С‚Рѕ РјРѕР¶РЅРѕ РІС‹РЅРµСЃС‚Рё РІ Р°Р±СЃС‚СЂР°РєС‚РЅС‹Р№ РєР»Р°СЃСЃ, РЅР°СЃР»РµРґРѕРІР°РЅРёРµ?
+-Р’ Р°Р±СЃС‚СЂР°РєС‚РЅРѕРј РєР»Р°СЃСЃРµ РјС‹ РІС‹РЅРѕСЃРёРј РїРѕР»СЏ Рё РѕР±С‰РёР№ Р°Р±СЃС‚СЂР°РєС‚РЅС‹Р№ РјРµС‚РѕРґ РєРѕС‚РѕСЂС‹Р№ РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµРѕРїСЂРµРґРµР»РёС‚СЊ РІ РєР°Р¶РґРѕРј РґРѕС‡РµСЂРЅРµРј РєР»Р°СЃСЃРµ
 
 
 */
@@ -28,9 +28,9 @@ abstract class Product {
     private $counts;
     private $type;
     
-    abstract function summ(); //Подсчет итоговой суммы
+    abstract function summ(); //РџРѕРґСЃС‡РµС‚ РёС‚РѕРіРѕРІРѕР№ СЃСѓРјРјС‹
     
-    abstract protected function getValue(); // вывод данных о товаре
+    abstract protected function getValue(); // РІС‹РІРѕРґ РґР°РЅРЅС‹С… Рѕ С‚РѕРІР°СЂРµ
 }
 
 
@@ -47,7 +47,7 @@ class physicalProduct extends Product {
     }
     
     public function getValue() {
-         echo "<tr><td>Физ. товар</td><td>$this->name</td><td>$this->cost</td><td>$this->counts</td><td>$this->type</td><td>".$this->summ()."</td>         </tr>";
+         echo "<tr><td>Р¤РёР·. С‚РѕРІР°СЂ</td><td>$this->name</td><td>$this->cost</td><td>$this->counts</td><td>$this->type</td><td>".$this->summ()."</td>         </tr>";
     }
 }
 
@@ -67,7 +67,7 @@ class digitalProduct extends Product
     }
 
      public function getValue() {
-         echo "<tr><td>Цифровой товар</td><td>$this->name</td><td>$this->cost</td><td>$this->counts</td><td>$this->type</td><td>".$this->summ()."</td>
+         echo "<tr><td>Р¦РёС„СЂРѕРІРѕР№ С‚РѕРІР°СЂ</td><td>$this->name</td><td>$this->cost</td><td>$this->counts</td><td>$this->type</td><td>".$this->summ()."</td>
          </tr>";
     }
 }
@@ -92,18 +92,18 @@ class weightProduct extends Product
     }
 
     public function getValue() {
-         echo "<tr><td>Весовой товар</td><td>$this->name</td><td>$this->cost</td><td>$this->counts</td><td>$this->type</td><td>".$this->summ()."</td>
+         echo "<tr><td>Р’РµСЃРѕРІРѕР№ С‚РѕРІР°СЂ</td><td>$this->name</td><td>$this->cost</td><td>$this->counts</td><td>$this->type</td><td>".$this->summ()."</td>
          </tr>";
     }
 }
 
-$physicalgoods = new physicalProduct("Монитор", "10990", "1", "Техника");
-$digitalgoods = new digitalProduct("Лицензия NOD32", "1290", "5", "Ключи");
-$weightgoods = new weightProduct("Золотое кольцо 585", "2490", "0.5", "Драг.Металлы");
+$physicalgoods = new physicalProduct("РњРѕРЅРёС‚РѕСЂ", "10990", "1", "РўРµС…РЅРёРєР°");
+$digitalgoods = new digitalProduct("Р›РёС†РµРЅР·РёСЏ NOD32", "1290", "5", "РљР»СЋС‡Рё");
+$weightgoods = new weightProduct("Р—РѕР»РѕС‚РѕРµ РєРѕР»СЊС†Рѕ 585", "2490", "0.5", "Р”СЂР°Рі.РњРµС‚Р°Р»Р»С‹");
 
 
 ?>
-<table style='border: solid 1px;'><thead><tr><td>Тип</td><td>Название</td><td>Стоимость за шт.</td><td>Кол-во</td><td>Раздел</td><td>Итог</td></tr></thead>
+<table style='border: solid 1px;'><thead><tr><td>РўРёРї</td><td>РќР°Р·РІР°РЅРёРµ</td><td>РЎС‚РѕРёРјРѕСЃС‚СЊ Р·Р° С€С‚.</td><td>РљРѕР»-РІРѕ</td><td>Р Р°Р·РґРµР»</td><td>РС‚РѕРі</td></tr></thead>
 <tbody>
      <?php 
      $physicalgoods->getValue(); 
@@ -115,24 +115,24 @@ $weightgoods = new weightProduct("Золотое кольцо 585", "2490", "0.5", "Драг.Мета
 
 <?php
 
-//* Реализовать паттерн Singleton при помощи traits. 
+//* Р РµР°Р»РёР·РѕРІР°С‚СЊ РїР°С‚С‚РµСЂРЅ Singleton РїСЂРё РїРѕРјРѕС‰Рё traits. 
 
 
 trait singletontrait {
-        private static $instance;  // Экземпляр объекта
-// Защищаем от создания через new Singleton
+        private static $instance;  // Р­РєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р°
+// Р—Р°С‰РёС‰Р°РµРј РѕС‚ СЃРѕР·РґР°РЅРёСЏ С‡РµСЂРµР· new Singleton
     private function __construct() { /* ... @return Singleton */ } 
     
     
-// Защищаем от создания через клонирование
+// Р—Р°С‰РёС‰Р°РµРј РѕС‚ СЃРѕР·РґР°РЅРёСЏ С‡РµСЂРµР· РєР»РѕРЅРёСЂРѕРІР°РЅРёРµ
     private function __clone() { /* ... @return Singleton */ }
     
     
-// Защищаем от создания через unserialize
+// Р—Р°С‰РёС‰Р°РµРј РѕС‚ СЃРѕР·РґР°РЅРёСЏ С‡РµСЂРµР· unserialize
      private function __wakeup()  { /* ... @return Singleton */ }
     
     
-// Возвращает единственный экземпляр класса. @return Singleton
+// Р’РѕР·РІСЂР°С‰Р°РµС‚ РµРґРёРЅСЃС‚РІРµРЅРЅС‹Р№ СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР°. @return Singleton
       public static function getInstance() {
             if ( empty(self::$instance) ) {
             self::$instance = new self();
@@ -146,7 +146,7 @@ trait singletontrait {
 class Singleton {
     use singletontrait;
     public function doAction() { 
-    echo "Проверка трейта";
+    echo "РџСЂРѕРІРµСЂРєР° С‚СЂРµР№С‚Р°";
     }
 
  }
