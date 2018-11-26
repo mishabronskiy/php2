@@ -143,6 +143,7 @@ trait singletontrait {
 
 
 
+
 class Singleton {
     use singletontrait;
     public function doAction() { 
